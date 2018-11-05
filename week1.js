@@ -62,11 +62,8 @@ $(function() {
     }
   });
 
-  
-  $process = $('#process');
 
   var output = [];
-
   $.each( cipherTexts, function( i, value ) {
     if( i !== 2 ) {
       var part1 = cipherTexts[i].text.substring(0, cipherTexts[2].text.length);
@@ -80,19 +77,19 @@ $(function() {
     }
   });
 
-  $process.append('<h5 class="text-primary">Round 1</h5>');
+  $('#processRound1').append('<h5 class="text-primary">Round 1</h5>');
   $.each( output, function( i, value ) {
 
     var name = '<h6>'+ value.name +'</h6>',
         text = '<p><code class="text-muted">'+ value.text +'</code></p>';
 
-        $process.append(name).append(text);
+        $('#processRound1').append(name).append(text);
   });
 
   var suppose = base64ToHex( Base64.encode('The nice thing about Keeyloq is now we cryptographers can drive a lot of fancy cars') ).replace(/ /g, '');
   var decoded = [];
 
-  $process.append('<h5 class="text-primary">Round 2</h5>');
+  $('#processRound2').append('<h5 class="text-primary">Round 2</h5>');
   $.each( cipherTexts, function( i, value ) {
 
     var xor = XOR_hex( cipherTexts[i].text.substring(0, suppose.length), cipherTexts[2].text.substring(0, suppose.length) );
@@ -102,10 +99,11 @@ $(function() {
     var name = '<h6>Decoded '+ value.name +'</h6>',
         text = '<p><code class="text-muted">'+ Base64.decode( hexToBase64( XOR_hex( suppose, xor ) ) ) +'</code></p>';
 
-        $process.append(name).append(text);
+    if( i != 10 ) $('#processRound2').append(name).append(text);
   });
 
-  $process.append('<h5>SUPPOSE</h5>').append('<code>' + XOR_hex( suppose, decoded[2] ) + '</code>');
+  $('#answer').append('<div>'+ Base64.decode( hexToBase64(  XOR_hex(decoded[10], suppose) ) ) +'</div>');
+  $('#answer').append('<div>The key is: '+ Base64.decode( hexToBase64( suppose ) ) + '</div>');
 });
 
 function XOR_hex(a, b) {

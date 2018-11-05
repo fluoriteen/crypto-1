@@ -22,7 +22,8 @@
           <div class="row pt-4 pb-4">
             <div class="col-10 col-md-8 col-xl-7">
               <h1>Hello Crypto!</h1>
-              <div class="lead">This is the Homework for <a href="https://www.coursera.org/learn/crypto/" target="_blank" class="text-success font-weight-bold">Coursera Cryptography I</a> course by Dan Boneh.</div>
+              <div class="lead mb-2">This is the Homework for <a href="https://www.coursera.org/learn/crypto/" target="_blank" class="text-success font-weight-bold">Coursera Cryptography I</a> course by Dan&nbsp;Boneh.</div>
+              <small><ins class="font-weight-bold">Attention!</ins> This document contains spoilers. Information grabbed here is your own risk and responsibility.</small>
             </div>
           </div>
         </div>
@@ -64,8 +65,8 @@
                   See input texts
                 </a>
                 <a class="btn btn-success" data-toggle="collapse" href="#inputTargetCipherText" role="button" aria-expanded="false" aria-controls="inputTargetCipherText">
-                    See target text
-                  </a>
+                  See target text
+                </a>
               </div>
               <div class="col-12 py-4">
                 <div id="inputCipherTexts" class="collapse"></div>
@@ -74,15 +75,36 @@
             </div>
 
             <div class="row process">
-              <div class="col-12 col-md-10 col-xl-7">
+              <div class="col-12 col-md-10 col-xl-7 pb-4">
                 <h4>Process...</h4>
+                <p>
+                  If we apply next formula to two different CTs (cipher texts), encrypted with the same key <code  class="text-muted">k</code>, we get XOR of plain messages:<br />
+                  <code class="text-muted">c<sub>1</sub> &oplus; c<sub>2</sub> = (m<sub>1</sub> &oplus; k) &oplus; (m<sub>2</sub> &oplus; k) = m<sub>1</sub> &oplus; m<sub>2</sub></code>.
+                </p>
+                <p>
+                  This looks like the <code class="text-muted">m<sub>1</sub></code> is encrypted with the key that equals <code class="text-muted">m<sub>2</sub></code>.
+                </p>
+                <p>So I've started looking for the CT in the given set of CTs, which has the smallest length, so that it looks like we have a text encrypted with the key of length, smaller than the message length.</p>
                 <a class="btn btn-outline-success" data-toggle="collapse" href="#process" role="button" aria-expanded="false" aria-controls="process">
                     See the process
                 </a>
               </div>
-              <div class="col-12 py-4">
-                <div id="process" class="collapse"></div>
+              <div id="process" class="collapse col-12 pb-4">
+                <div class="row">
+                  <div id="processRound1" class="col-12 col-lg-6"></div>
+                  <div id="processRound2" class="col-12 col-lg-6"></div>
+                </div>
               </div>
+            </div>
+
+            <div class="answer pb-4">
+              <h4>Answer</h4>
+              <div class="my-4">
+                <div id="answer" class="collapse"></div>
+              </div>
+              <a class="btn btn-success" data-toggle="collapse" href="#answer" role="button" aria-expanded="false" aria-controls="answer">
+                See the answer
+              </a>
             </div>
           </div>
         </div>
