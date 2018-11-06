@@ -24,7 +24,7 @@ $(function() {
 function processProgressScroll() {
   $progress = $('#progressScroll');
 
-  var scrollPosition = $(window).scrollTop() / $(document).height() * 100;
+  var scrollPosition = $(document).scrollTop() / $(document).height() * 100;
   $progress.attr('aria-valuenow', scrollPosition );
   $progress.css('width', scrollPosition + '%' );
 }
