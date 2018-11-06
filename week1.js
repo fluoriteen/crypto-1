@@ -108,8 +108,8 @@ $(function() {
   }
 
   function quiz_week1() {
-    var pt1_7 = base64ToHex(Base64.encode('attack at dawn'));
-    var pt2_7 = base64ToHex(Base64.encode('attack at dusk'));
+    var pt1_7 = base64ToHex(Base64.encode('attack at dawn')).replace(/ /g, '');
+    var pt2_7 = base64ToHex(Base64.encode('attack at dusk')).replace(/ /g, '');
 
     var ct1_7 = '09e1c5f70a65ac519458e7e53f36';
     var key_7 = XOR_hex( pt1_7, ct1_7 );
