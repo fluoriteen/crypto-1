@@ -111,11 +111,12 @@ $(function() {
     var pt1_7 = base64ToHex(Base64.encode('attack at dawn')).replace(/ /g, '');
     var pt2_7 = base64ToHex(Base64.encode('attack at dusk')).replace(/ /g, '');
 
-    var ct1_7 = '09e1c5f70a65ac519458e7e53f36';
+    var ct1_7 = '6c73d5240a948c86981bc294814d';
     var key_7 = XOR_hex( pt1_7, ct1_7 );
 
     var ct2_7 = XOR_hex( pt2_7, key_7 );
 
+    $('#quiz7_ct1').append( ct1_7 );
     $('#quiz7').append( ct2_7 );
   }
   
