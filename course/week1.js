@@ -103,7 +103,7 @@ $(function() {
       if( i != 10 ) $('#processRound2').append(name).append(text);
     });
   
-    $('#answer').append('<div>'+ Base64.decode( hexToBase64(  XOR_hex(decoded[10], suppose) ) ) +'</div>');
+    // $('#answer').append('<div>'+ Base64.decode( hexToBase64(  XOR_hex(decoded[10], suppose) ) ) +'</div>');
     $('#answer').append('<div>The key is: '+ Base64.decode( hexToBase64( suppose ) ) + '</div>');
   }
 
@@ -123,12 +123,3 @@ $(function() {
   pa_week1();
   quiz_week1();
 });
-
-function XOR_hex(a, b) {
-  var res = "",
-      i = a.length,
-      j = b.length;
-  while (i-->0 && j-->0)
-      res = (parseInt(a.charAt(i), 16) ^ parseInt(b.charAt(j), 16)).toString(16) + res;
-  return res;
-}
