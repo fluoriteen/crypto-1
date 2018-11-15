@@ -15,6 +15,7 @@
     <script src="../overview.js"></script>
     <script src="basis.js"></script>
     <script src="week1.js"></script>
+    <script src="week2.js"></script>
   </head>
   <body>
     <div class="page">
@@ -40,6 +41,9 @@
               <li class="nav-item mx-3">
                 <a class="nav-link active" href="#week1">Week 1</a>
               </li>
+              <li class="nav-item mx-3">
+                  <a class="nav-link" href="#week2">Week 2</a>
+                </li>
               <li class="nav-item mx-3">
                 <a class="nav-link" href="../challenge/overview.html">Cryptopals</a>
               </li>
@@ -125,6 +129,86 @@
                 <a class="btn btn-success" data-toggle="collapse" href="#quiz7" role="button" aria-expanded="false" aria-controls="quiz7">
                   See the answer
                 </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="week2" class="section section-2" style="padding-top: 5rem;">
+          <div class="container">
+            <div class="row py-4">
+              <div class="col-10 col-md-8 col-xl-7">
+                <h3>Week 2 <small class="text-muted ml-3">due to November 12</small></h3>
+              </div>
+            </div>
+            <div class="row quiz">
+              <div class="col-12 col-md-10 col-xl-8 pb-4"><h4>Quiz</h4></div>
+              <div id="quiz2-4task" class="col-12 col-md-10 col-xl-8 pb-4">
+                
+                <div class="task">
+                  <p>
+                    4. Recall that the Luby-Rackoff theorem discussed in The Data Encryption Standard lecture states that applying a three round Feistel network to a secure PRF gives a secure block cipher. Let's see what goes wrong if we only use a two round Feistel.
+                  </p>
+                  <p>
+                    Let <code class="text-muted">F: K &times; {0,1}<sup>32</sup> -> {0,1}<sup>32</sup></code> be a secure PRF.
+                  </p> 
+                  <p>Recall that a 2-round Feistel defines the following PRP</p>
+                  <p>
+                    Let <code class="text-muted">F<sub>2</sub>: K<sup>2</sup> &times; {0,1}<sup>64</sup> -> {0,1}<sup>64</sup></code> be a secure PRF.
+                  </p>
+                  <p><img src="week2-4.png" /></p>
+                  <p>
+                    Here <code class="text-muted">R<sub>0</sub></code> is the right 32 bits of the 64-bit input and  <code class="text-muted">L<sub>0</sub></code> is the left 32 bits.
+                  </p>
+                  <p>  
+                    One of the following lines is the output of this PRP <code class="text-muted">F<sub>2</sub></code> using a random key, while the other three are the output of a truly random permutation <code class="text-muted">f: {0,1}<sup>64</sup> &times; {0,1}<sup>64</sup> -> {0,1}<sup>64</sup></code>.
+                  </p>
+                  <p>All 64-bit outputs are encoded as 16 hex characters.</p>
+                  <p>  
+                    Can you say which is the output of the PRP? Note that since you are able to distinguish the output of <code class="text-muted">F<sub>2</sub></code> from random, <code class="text-muted">F<sub>2</sub></code> is not a secure block cipher, which is what we wanted to show.
+                  </p>
+                  <p>
+                    <b>Hint</b>: First argue that there is a detectable pattern in the xor of <code class="text-muted">F<sub>2</sub>(&dot;, 0<sup>64</sup>)</code> and <code class="text-muted">F<sub>2</sub>(&dot;, 1<sup>32</sup>0<sup>32</sup>)</code>. Then try to detect this pattern in the given outputs.
+                  </p>
+                </div>
+                <a class="btn btn-success" data-toggle="collapse" href="#quiz2-4process" role="button" aria-expanded="false" aria-controls="quiz2-4process">
+                  See the process
+                </a>
+              </div>
+              <div id="quiz2-4process" class="collapse my-5 col-12">
+                <div id="q4xor" class="row mb-3">
+                  <div class="col-auto">
+                    <code class="text-dark"><b>0<sup>64</sup> ⊕ 1<sup>32</sup>0<sup>32</sup></b></code>
+                  </div>
+                </div>
+              </div>
+
+              <div id="quiz2-9task" class="col-12 col-md-10 col-xl-8 pb-4">
+                  <div class="task">
+                    <p>
+                      9. Let <code class="text-muted">R := {0,1}<sup>4</sup></code> and consider the following PRF <code class="text-muted">F : R<sup>5</sup> &times; R -> R</code> defined as follows:
+                    </p>
+                    <p><img src="week2-9.png" /></p>
+                    <p>
+                      That is, the key is <code class="text-muted">k = (k[0],k[1],k[2],k[3],k[4])</code> in <code class="text-muted">R<sup>5</sup></code> and the function at, for example, <code class="text-muted">0101</code> is defined as <code class="text-muted">F(k,0101) = k[0] &oplus; k[2] &oplus; k[4]</code>.
+                    </p>
+                    <p>
+                      For a random key <code class="text-muted">k</code> unknown to you, you learn that
+                    </p>
+                    <p>
+                      <code class="text-muted">F(k,0110) = 0011</code> &nbsp;&nbsp;and&nbsp;&nbsp; <code class="text-muted">F(k,0101) = 1010</code> &nbsp;&nbsp;and&nbsp;&nbsp; <code class="text-muted">F(k, 1110) = 0110</code>.
+                    </p>
+                    <p>
+                      What is the value of <code class="text-muted">F(k, 1101)</code>?<br />
+                      Note that since you are able to predict the function at a new point, this PRF is insecure.
+                    </p>
+                  </div>
+                  <a class="btn btn-success" data-toggle="collapse" href="#quiz2-9process" role="button" aria-expanded="false" aria-controls="quiz2-9process">
+                    See the process
+                  </a>
+              </div>
+              <div id="quiz2-9process" class="collapse my-5 col-12">
+                
               </div>
             </div>
           </div>
